@@ -1,7 +1,33 @@
 
 export default function Hero() {
   return (
-    <section id="home" className="hero">
+    
+<section
+  id="home"
+  className="hero"
+  onPointerMove={(event) => {
+    if (event.pointerType !== "mouse") {
+      return;
+    }
+
+    const hero = event.currentTarget;
+    const rect = hero.getBoundingClientRect();
+
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+
+    hero.style.setProperty(
+      "--mouse-x",
+      `${x}px`
+    );
+
+    hero.style.setProperty(
+      "--mouse-y",
+      `${y}px`
+    );
+  }}
+>
+
       <div className="hero-content">
         <p className="hero-label">
           FRONTEND DEVELOPER · BCA GRADUATE

@@ -1055,3 +1055,353 @@ html[data-theme="dark"] .footer {
     height: 36px;
   }
 }
+
+
+/* ANIMATED S LOGO */
+
+.logo-image {
+  transition:
+    transform 0.35s ease,
+    filter 0.35s ease;
+  transform-origin: center;
+}
+
+/* Hover animation */
+.logo:hover .logo-image,
+.logo:focus-visible .logo-image {
+  transform: translateY(-3px) rotate(-8deg) scale(1.12);
+  filter: drop-shadow(0 5px 10px rgba(86, 128, 74, 0.45));
+}
+
+/* Smooth logo text effect */
+.logo {
+  transition: color 0.3s ease;
+}
+
+.logo:hover {
+  color: #56804a;
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .logo-image,
+  .logo {
+    transition: none;
+  }
+
+  .logo:hover .logo-image,
+  .logo:focus-visible .logo-image {
+    transform: none;
+  }
+}
+
+
+/* 1. ANIMATED NAVIGATION UNDERLINE */
+
+.nav-links a {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 6px;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+
+  width: 100%;
+  height: 2px;
+  background: #56804a;
+  border-radius: 2px;
+
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.nav-links a:hover::after,
+.nav-links a:focus-visible::after {
+  transform: scaleX(1);
+}
+
+/* Dark mode underline */
+
+html[data-theme="dark"] .nav-links a::after {
+  background: #a7d29a;
+}
+
+
+/* 2. SCROLL REVEAL ANIMATION */
+
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(28px);
+
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+}
+
+.reveal-on-scroll.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* 3. PROJECT CARD SPOTLIGHT */
+
+.project-card {
+  position: relative;
+  isolation: isolate;
+
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
+}
+
+.project-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+
+  background: radial-gradient(
+    circle at 50% 0%,
+    rgba(125, 175, 105, 0.16),
+    transparent 65%
+  );
+
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.project-card:hover,
+.project-card:focus-within {
+  transform: translateY(-7px);
+  border-color: #8eb784;
+
+  box-shadow:
+    0 18px 40px rgba(46, 93, 43, 0.16);
+}
+
+.project-card:hover::after,
+.project-card:focus-within::after {
+  opacity: 1;
+}
+
+/* Dark mode spotlight */
+
+html[data-theme="dark"] .project-card:hover,
+html[data-theme="dark"] .project-card:focus-within {
+  border-color: #7da86f;
+
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.35);
+}
+
+
+/* REDUCED MOTION SUPPORT */
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-links a::after,
+  .reveal-on-scroll,
+  .project-card,
+  .project-card::after {
+    transition: none;
+  }
+
+  .reveal-on-scroll {
+    opacity: 1;
+    transform: none;
+  }
+
+  .project-card:hover,
+  .project-card:focus-within {
+    transform: none;
+  }
+}
+
+
+/* Improve logo visibility in dark mode */
+
+html[data-theme="dark"] .logo {
+  color: #edf3e9;
+}
+
+html[data-theme="dark"] .logo span {
+  color: #a7d29a;
+}
+
+html[data-theme="dark"] .logo-image {
+  filter: brightness(1.5) saturate(1.1);
+}
+
+
+/* SCROLL PROGRESS BAR */
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+
+  background: linear-gradient(
+    90deg,
+    #56804a,
+    #a7d29a
+  );
+
+  transform: scaleX(0);
+  transform-origin: left;
+
+  z-index: 9999;
+  pointer-events: none;
+}
+
+/* Dark mode */
+
+html[data-theme="dark"] .scroll-progress {
+  background: linear-gradient(
+    90deg,
+    #7cab71,
+    #c2efb5
+  );
+}
+
+
+/* MOUSE-FOLLOWING HERO GLOW */
+
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+
+  background: radial-gradient(
+    360px circle at
+    var(--mouse-x, 50%)
+    var(--mouse-y, 50%),
+    rgba(119, 176, 103, 0.14),
+    transparent 75%
+  );
+
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+/* Keep content above the glow */
+
+.hero-content,
+.hero-visual {
+  position: relative;
+  z-index: 1;
+}
+
+/* Show effect on desktop */
+
+@media (hover: hover) and (pointer: fine) {
+  .hero:hover::before {
+    opacity: 1;
+  }
+}
+
+/* Slightly brighter glow in dark mode */
+
+html[data-theme="dark"] .hero::before {
+  background: radial-gradient(
+    360px circle at
+    var(--mouse-x, 50%)
+    var(--mouse-y, 50%),
+    rgba(126, 198, 105, 0.18),
+    transparent 75%
+  );
+}
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+  .hero::before {
+    display: none;
+  }
+}
+
+
+/* LIGHT MODE MOUSE GLOW FIX */
+
+html:not([data-theme="dark"]) .hero::before {
+  background: radial-gradient(
+    450px circle at
+    var(--mouse-x, 50%)
+    var(--mouse-y, 50%),
+    rgba(65, 125, 55, 0.26),
+    rgba(130, 185, 110, 0.10) 45%,
+    transparent 75%
+  );
+}
+
+/* DARK MODE MOUSE GLOW */
+
+html[data-theme="dark"] .hero::before {
+  background: radial-gradient(
+    450px circle at
+    var(--mouse-x, 50%)
+    var(--mouse-y, 50%),
+    rgba(125, 195, 105, 0.18),
+    transparent 75%
+  );
+}
+
+/* Show the glow when using a mouse */
+
+@media (hover: hover) and (pointer: fine) {
+  .hero:hover::before {
+    opacity: 1;
+  }
+}
+
+
+/* SCROLL PROGRESS BAR COLORS */
+
+html:not([data-theme="dark"]) .scroll-progress {
+  background: linear-gradient(
+    90deg,
+    #285c2b,
+    #5a964c
+  );
+}
+
+html[data-theme="dark"] .scroll-progress {
+  background: linear-gradient(
+    90deg,
+    #7cab71,
+    #c2efb5
+  );
+}
+
+
+/* STICKY NAVBAR */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.06);
+}
+
+/* Dark mode sticky navbar */
+
+html[data-theme="dark"] .site-header {
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+}
