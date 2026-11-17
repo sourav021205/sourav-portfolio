@@ -38,7 +38,7 @@ and yield prediction.
 
 My portfolio is deployed using Vercel.
 
-**Live Website:** https://your-actual-vercel-url.vercel.app
+**Live Website:** https://sourav-portfolio-ebon-ten.vercel.app/
 
 ## 🚀 Deployment
 
