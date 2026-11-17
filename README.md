@@ -32,6 +32,22 @@ for analyzing and predicting shipment delays.
 A machine learning project for crop recommendation
 and yield prediction.
 
+
+
+## 🌐 Live Demo
+
+My portfolio is deployed using Vercel.
+
+**Live Website:** https://your-actual-vercel-url.vercel.app
+
+## 🚀 Deployment
+
+- Hosting Platform: Vercel
+- Framework: React + TypeScript + Vite
+- Version Control: Git & GitHub
+- Deployment: Connected to GitHub
+
+
 ## Run Locally
 
 Clone the repository:
