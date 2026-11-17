@@ -41,9 +41,16 @@ export default function Navbar() {
   return (
     <header className="site-header">
       <nav className="navbar" aria-label="Main navigation">
+        
         <a href="#home" className="logo">
+          <img
+            src="/sourav-logo.png"
+            alt=""
+            className="logo-image"
+          />
           Sourav<span>.</span>
         </a>
+
 
         <div className="nav-links">
           {links.map((link) => (

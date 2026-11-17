@@ -1032,3 +1032,26 @@ html[data-theme="dark"] .footer {
     margin-left: 0;
   }
 }
+
+/* PORTFOLIO LOGO */
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+}
+
+.logo-image {
+  width: 54px;
+  height: 44px;
+  object-fit: contain;
+  display: block;
+}
+
+@media (max-width: 600px) {
+  .logo-image {
+    width: 44px;
+    height: 36px;
+  }
+}
